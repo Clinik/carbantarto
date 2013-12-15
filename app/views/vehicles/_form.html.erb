@@ -1,0 +1,47 @@
+<%= form_for(@vehicle, :html => { :class => "form-horizontal" }) do |f| %>
+  <% if @vehicle.errors.any? %>
+    <div class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><%= pluralize(@vehicle.errors.count, "error") %> prohibited this vehicle from being saved:</h4>
+
+      <ul>
+      <% @vehicle.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :manufacturer, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+      <%= f.text_field :manufacturer, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :modell, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+      <%= f.text_field :subtype, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :year, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+      <%= f.number_field :year, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :color, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+      <%= f.text_field :color, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+   
+  </div>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit :class => "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<div class="page-header">
+  <%= link_to vehicles_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_vehicle_path(@vehicle), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show vehicle</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Manufacturer:</dt>
+  <dd><%= @vehicle.manufacturer %></dd>
+
+  <dt>Modell:</dt>
+  <dd><%= @vehicle.subtype %></dd>
+
+  <dt>Year:</dt>
+  <dd><%= @vehicle.year %></dd>
+
+  <dt>Color:</dt>
+  <dd><%= @vehicle.color %></dd>
+
+  <dt>Owner:</dt>
+  <dd><%= @vehicle.user %></dd>
+
+</dl>
