@@ -4,16 +4,29 @@ CarbantartoApp::Application.routes.draw do
   end
   root :to => 'home#index'
 
+  resources :motorcycles, :controller => "vehicles", :type => "Motorcycle"
+  resources :cars, :controller => "vehicles", :type => "Car"
+  resources :vehicles, :controller => "vehicles", :type => "Vehicle"
+
+  #namespace "cars" do
+  #  resources :vehicles, :type => "Car"
+  #end
+
+  #namespace "motorcycles" do
+  #  resources :vehicles, :type => "Motorcycle"
+  #end
   
+
   devise_for :users
   resources :users
   resources :properties
   resources :vehicles do
     resources :users do
-      
+    end
+    resources :properties do
     end
   end
-
+  
   resources :home
 
 

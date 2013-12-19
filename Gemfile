@@ -12,9 +12,16 @@ gem 'therubyracer'
 gem 'twitter-bootstrap-rails'
 gem 'less-rails'
 gem 'bootstrap-generators'
+#gem 'bootstrap-sass-rails'
 gem 'cancan'
 gem 'devise'
 gem 'rolify'
+gem 'paperclip'
+gem 'rmagick'
+
+gem 'quiet_assets'
+gem 'better_errors'
+gem 'binding_of_caller'
 
 # Gems used only for assets and not required
 # in production environments by default.

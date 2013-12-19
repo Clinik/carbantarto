@@ -9,8 +9,14 @@
   <% end %>
   <h1>Show vehicle</h1>
 </div>
-
 <dl class="dl-horizontal">
+
+<% if @vehicle.avatar.exists? then %>
+  <%= image_tag @vehicle.avatar.url(:thumb) %></p>
+  <% else %>
+  <p> No photo... </p>
+<% end %>
+
   <dt>Manufacturer:</dt>
   <dd><%= @vehicle.manufacturer %></dd>
 
@@ -24,6 +30,18 @@
   <dd><%= @vehicle.color %></dd>
 
   <dt>Owner:</dt>
-  <dd><%= @vehicle.user %></dd>
+  <dd><%= @vehicle.user.email %></dd>
 
+  <dt>Type:</dt>
+  <dd><%= @vehicle.type %></dd>
+
+  <dt>Props:</dt>
+  <dd><%= @vehicle.properties.map{|pr| pr.name}.sort.join(', ')%></dd>
+
+  <dt>Prop vals:</dt>
+  <dd>
+    <% @vehicle.vehicleprops.each do |prop| %>
+      <%= prop.get_property_string %>
+    <% end %>
+  </dd>
 </dl>

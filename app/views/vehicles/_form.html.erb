@@ -1,4 +1,4 @@
-<%= form_for(@vehicle, :html => { :class => "form-horizontal" }) do |f| %>
+<%= form_for(@vehicle, :html => { :class => "form-horizontal", :multipart => true }) do |f| %>
   <% if @vehicle.errors.any? %>
     <div class="alert alert-danger alert-dismissable">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -11,6 +11,10 @@
       </ul>
     </div>
   <% end %>
+
+  <%#= form_for @vehicle, :url => users_path, :html => { :multipart => true } do |form| %>
+  <%= f.file_field :avatar %>
+  <%# end %>
 
   <div class="form-group">
     <%= f.label :manufacturer, :class => "col-lg-2 control-label" %>
@@ -36,8 +40,26 @@
       <%= f.text_field :color, :class => "form-control" %>
     </div>
   </div>
+
   <div class="form-group">
-   
+     <%= f.label "Properties:", :class => "col-lg-2 control-label"%>
+    <div class="col-lg-10">
+      
+      <% Property.all.each do |prop| %>
+        <%= label_tag 'prop' do %>
+          <%= prop.name %> <%= text_field_tag "properties[#{prop.name}[propvalue]]" %>
+          <%= hidden_field_tag "properties[#{prop.name}[property_id]]", prop.id %>
+        <% end %>
+      <% end %>
+        
+      </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label "Type:", :class => "col-lg-2 control-label"%>
+    <div class="col-lg-10">
+      <%= f.select :type, ['Car', 'Motorcycle']%>
+    </div>
   </div>
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">

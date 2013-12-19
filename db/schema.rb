@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131212233033) do
+ActiveRecord::Schema.define(:version => 20131218213448) do
 
   create_table "properties", :force => true do |t|
     t.string   "name"
@@ -57,15 +57,28 @@ ActiveRecord::Schema.define(:version => 20131212233033) do
 
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
 
+  create_table "vehicleprops", :force => true do |t|
+    t.integer "property_id"
+    t.integer "vehicle_id"
+    t.string  "propvalue"
+  end
+
+  add_index "vehicleprops", ["property_id", "vehicle_id"], :name => "index_properties_vehicles_on_property_id_and_vehicle_id"
+
   create_table "vehicles", :force => true do |t|
     t.string   "manufacturer"
     t.string   "subtype"
     t.integer  "year"
     t.string   "color"
     t.integer  "user"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.integer  "user_id"
+    t.string   "type"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "vehicles", ["user_id"], :name => "index_vehicles_on_user_id"

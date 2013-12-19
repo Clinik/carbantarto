@@ -12,14 +12,22 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
-  def can?(role)
-    return !!self.roles.find_by_name(role.to_s.camelize)
-  end
+  #def can?(role)
+    #return !!self.roles.find_by_name(role.to_s.camelize)
+  #end
 
   after_create :assign_default_role
 
   def assign_default_role
-    add_role(:usr)
+
+    if(User.all.count == 1)
+      #Rails.logger.info('ADMINT CSINAL')
+      add_role(:admin)
+    else
+      #Rails.logger.info('uSERT CSINAL')
+      add_role(:usr)
+    end
+
   end
 
 end
