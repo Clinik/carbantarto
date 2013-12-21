@@ -12,6 +12,7 @@
  *= require bootstrap-generators
  *= require scaffolds
  *= require vehicles
+ *= require jquery.gridster.css
+ *= require clinik-gridster.scss
  *= require_self
  */
-

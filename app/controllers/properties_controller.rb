@@ -8,7 +8,7 @@ class PropertiesController < ApplicationController
     @properties = Property.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
       format.json { render json: @properties }
     end
   end
@@ -19,7 +19,7 @@ class PropertiesController < ApplicationController
     @property = Property.find(params[:id])
   
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # show.html.haml
       format.json { render json: @property }
     end
   end
@@ -30,7 +30,7 @@ class PropertiesController < ApplicationController
     @property = Property.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # new.html.haml
       format.json { render json: @property }
     end
   end

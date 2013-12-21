@@ -1,0 +1,42 @@
+= form_for(@vehicle, :html => { :class => "form-horizontal", :multipart => true }) do |f|
+  - if @vehicle.errors.any?
+    .alert.alert-danger.alert-dismissable
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+      %h4
+        = pluralize(@vehicle.errors.count, "error")
+        prohibited this vehicle from being saved:
+      %ul
+        - @vehicle.errors.full_messages.each do |msg|
+          %li= msg
+  = f.file_field :avatar
+  .form-group
+    = f.label :manufacturer, :class => "col-lg-2 control-label"
+    .col-lg-10
+      = f.text_field :manufacturer, :class => "form-control"
+  .form-group
+    = f.label :modell, :class => "col-lg-2 control-label"
+    .col-lg-10
+      = f.text_field :subtype, :class => "form-control"
+  .form-group
+    = f.label :year, :class => "col-lg-2 control-label"
+    .col-lg-10
+      = f.number_field :year, :class => "form-control"
+  .form-group
+    = f.label :color, :class => "col-lg-2 control-label"
+    .col-lg-10
+      = f.text_field :color, :class => "form-control"
+  .form-group
+    = f.label "Properties:", :class => "col-lg-2 control-label"
+    .col-lg-10
+      - Property.all.each do |prop|
+        = label_tag 'prop' do
+          = prop.name
+          = text_field_tag "properties[#{prop.name}[propvalue]]"
+          = hidden_field_tag "properties[#{prop.name}[property_id]]", prop.id
+  .form-group
+    = f.label "Type:", :class => "col-lg-2 control-label"
+    .col-lg-10
+      = f.select :type, ['Car', 'Motorcycle']
+  .form-group
+    .col-lg-offset-2.col-lg-10
+      = f.submit :class => "btn btn-primary"

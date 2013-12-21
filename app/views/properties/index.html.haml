@@ -1,0 +1,26 @@
+.page-header
+  = link_to new_property_path, :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New property
+  %h1 Property list
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Name
+        %th
+        %th
+        - if can? :update, Property
+          %th
+        - if can? :destroy, Property
+          %th
+    %tbody
+      = content_tag_for(:tr, @properties) do |property|
+        %td= property.name
+        %td= link_to 'Show', property
+        - if can? :update, Property
+          %td
+            = link_to 'Edit', edit_property_path(property)
+        - if can? :destroy, Property
+          %td
+            = link_to 'Destroy', property, method: :delete, data: { confirm: 'Sure?' }

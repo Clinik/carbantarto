@@ -1,0 +1,11 @@
+.page-header
+  = link_to properties_path, :class => 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_property_path(@property), :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1 Show property
+%dl.dl-horizontal
+  %dt Name:
+  %dd= @property.name

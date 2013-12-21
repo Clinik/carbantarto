@@ -1,0 +1,67 @@
+$green: 	#00a300 !default;
+$orange:	#e3a21a !default;
+
+.wrapper.gridster {
+	background-color: black;
+	position: relative;
+	margin-left: 10%;
+	margin-right: 10%;
+	width: 80%;
+	height: auto;
+}
+
+#box1 {
+	background-color: $green;
+}
+
+#box2 {
+	background-color: $orange;
+}
+
+.gridster li:before{ 
+     display: block; 
+     height:50px; 
+     width:100%; 
+     position: absolute; 
+     top:35%; 
+     left:0; 
+     right:0;
+}
+
+/*.gs_w:before{ content:''; background:url('rails.png') no-repeat center; }*/
+
+.bg-blue       {background-color: #2d89ef;}
+.bg-blueLight  {background-color: #eff4ff;}
+.bg-blueDark   {background-color: #2b5797;}
+.bg-green      {background-color: #00a300;}
+.bg-greenLight {background-color: #99b433;}
+.bg-greenDark  {background-color: #1e7145;}
+.bg-red        {background-color: #b91d47;}
+.bg-yellow     {background-color: #ffc40d;}
+.bg-orange     {background-color: #e3a21a;}
+.bg-orangeDark {background-color: #da532c;}
+.bg-pink       {background-color: #9f00a7;}
+.bg-pinkDark   {background-color: #7e3878;}
+.bg-purple     {background-color: #603cba;}
+.bg-darken     {background-color: #1d1d1d;}
+.bg-lighten    {background-color: #d5e7ec;}
+.bg-white      {background-color: #ffffff;}
+.bg-grayDark   {background-color: #525252;}
+
+.font-blue,       .font-blue-link a         {color: #2d89ef;}
+.font-blueLight,  .font-blueLight-link a    {color: #eff4ff;}
+.font-blueDark,   .font-blueDark-link a     {color: #2b5797;}
+.font-green,      .font-green-link a        {color: #00a300;}
+.font-greenLight, .font-greenLight-link a   {color: #99b433;}
+.font-greenDark,  .font-greenDark-link a    {color: #1e7145;}
+.font-red,        .font-red-link a          {color: #b91d47;}
+.font-yellow,     .font-yellow-link a       {color: #ffc40d;}
+.font-orange,     .font-orange-link a       {color: #e3a21a;}
+.font-orangeDark, .font-orangeDark-link a   {color: #da532c;}
+.font-pink,       .font-pink-link a         {color: #9f00a7;}
+.font-pinkDark,   .font-pinkDark-link a     {color: #7e3878;}
+.font-purple,     .font-purple-link a       {color: #603cba;}
+.font-darken,     .font-darken-link a       {color: #1d1d1d;}
+.font-lighten,    .font-lighten-link a      {color: #d5e7ec;}
+.font-white,      .font-white-link a        {color: #ffffff;}
+.font-grayDark,   .font-grayDark-link a     {color: #525252;}

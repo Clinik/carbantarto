@@ -1,0 +1,55 @@
+!!!
+%html
+  %head
+    %meta{:charset => "utf-8"}/
+    %title Carbantartó
+    %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", :name => "viewport"}/
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "", :name => "author"}/
+    / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
+    /[if lt IE 9]
+      <haml:loud> javascript_include_tag &amp;quot;bootstrap-ie&amp;quot; </haml:loud>
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    %nav.navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
+      .navbar-header
+        %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        = link_to 'Carbantartó', home_index_path, :class => 'navbar-brand'
+      %form.navbar-form.form-inline
+        %ul.nav.navbar-nav
+          %li.dropdown
+            = link_to 'Vehicles <b class="caret"></b>'.html_safe, vehicles_path, :'data-toggle' => 'dropdown', :class => 'dropdown-toggle link'
+            %ul.dropdown-menu
+              %li
+                = link_to 'All', vehicles_path
+              %li
+                = link_to 'Cars', cars_path
+              %li
+                = link_to 'Motorcycles', motorcycles_path
+          %li
+            = link_to 'Properties', properties_path
+        %p.navbar-text.pull-right
+          - if user_signed_in?
+            Logged in as
+            = succeed "." do
+              %strong= current_user.email
+            = link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link'
+            |
+            \#{link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'}
+          - else
+            = link_to "Sign up", new_user_registration_path, :class => 'navbar-link'
+            |
+            \#{link_to "Login", new_user_session_path, :class => 'navbar-link'}
+    .container
+      - flash.each do |name, msg|
+        = content_tag :div, :class => "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable" do
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+          = msg
+    .indexdiv
+      = yield

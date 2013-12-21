@@ -1,0 +1,37 @@
+.page-header
+  = link_to new_vehicle_path, :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Vehicle
+  %h1
+    = params[:type]
+    s
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Manufacturer
+        %th Modell
+        %th Year
+        %th Color
+        %th Owner
+        %th
+        - if can? :update, Vehicle
+          %th
+        - if can? :destroy, Vehicle
+          %th
+    %tbody
+      = content_tag_for(:tr, @vehicles) do |vehicle|
+        %td= vehicle.manufacturer
+        %td= vehicle.subtype
+        %td= vehicle.year
+        %td= vehicle.color
+        %td= vehicle.user.email
+        - if can? :read, Vehicle
+          %td
+            = link_to 'Show', vehicle
+        - if can? :update, Vehicle
+          %td
+            = link_to 'Edit', edit_vehicle_path(vehicle)
+        - if can? :destroy, Vehicle
+          %td
+            = link_to 'Destroy', vehicle, method: :delete, data: { confirm: 'Are you sure?' }

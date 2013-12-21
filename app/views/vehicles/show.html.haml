@@ -1,0 +1,31 @@
+.page-header
+  = link_to vehicles_path, :class => 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_vehicle_path(@vehicle), :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1 Show vehicle
+%dl.dl-horizontal
+  - if @vehicle.avatar.exists? then
+    = image_tag @vehicle.avatar.url(:thumb)
+  - else
+    %p No photo...
+  %dt Manufacturer:
+  %dd= @vehicle.manufacturer
+  %dt Modell:
+  %dd= @vehicle.subtype
+  %dt Year:
+  %dd= @vehicle.year
+  %dt Color:
+  %dd= @vehicle.color
+  %dt Owner:
+  %dd= @vehicle.user.email
+  %dt Type:
+  %dd= @vehicle.type
+  %dt Props:
+  %dd= @vehicle.properties.map{|pr| pr.name}.sort.join(', ')
+  %dt Prop vals:
+  %dd
+    - @vehicle.vehicleprops.each do |prop|
+      = prop.get_property_string

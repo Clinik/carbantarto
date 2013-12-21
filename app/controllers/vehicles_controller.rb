@@ -15,7 +15,7 @@ class VehiclesController < ApplicationController
     @vehicles = vehicle_type.all
     
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
       format.json { render json: @vehicles }
     end
   end
@@ -26,7 +26,7 @@ class VehiclesController < ApplicationController
     @vehicle = vehicle_type.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # show.html.haml
       format.json { render json: @vehicle }
     end
   end
@@ -38,7 +38,7 @@ class VehiclesController < ApplicationController
     @list_of_properties = Property.all
     
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # new.html.haml
       format.json { render json: @vehicle }
     end
   end
